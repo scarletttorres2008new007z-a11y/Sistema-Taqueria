@@ -169,7 +169,8 @@ Las tablas se crean solas al iniciar el sistema por primera vez.
 
 ## 7. Iniciar el sistema
 
-**Windows**: doble clic en `iniciar.bat`. La primera vez compila el sistema (unos minutos).
+**Windows**: doble clic en `iniciar.bat`. El ZIP ya trae el sistema compilado (`target/taqueria.jar`), así que
+no necesita compilar. Si descarga el código desde GitHub, la primera vez se compila solo (unos minutos, requiere internet).
 
 **Manual (cualquier sistema operativo)**, desde la carpeta del sistema:
 ```
