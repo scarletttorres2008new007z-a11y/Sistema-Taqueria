@@ -1,0 +1,10 @@
+target/
+uploads/
+respaldos/
+.env
+*.log
+pruebas-navegador/node_modules/
+pruebas-navegador/resultados/
+.idea/
+.vscode/
+*.iml

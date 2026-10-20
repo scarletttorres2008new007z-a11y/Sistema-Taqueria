@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Productos y menú</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/productos.js"></script>
+</head>
+<body>
+<div id="vista">
+<ul class="nav nav-tabs mb-3" role="tablist">
+    <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-productos" type="button" role="tab">Productos</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-categorias" type="button" role="tab">Categorías</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-complementos" type="button" role="tab">Complementos</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-mesas" type="button" role="tab">Mesas</button></li>
+</ul>
+<div class="tab-content">
+    <section class="tab-pane fade show active tarjeta" id="tab-productos" role="tabpanel">
+        <div class="tarjeta-cuerpo d-flex flex-wrap gap-2 align-items-center">
+            <input class="form-control form-control-sm" style="max-width:260px" id="buscar-productos" placeholder="Buscar por nombre o código" aria-label="Buscar producto">
+            <select class="form-select form-select-sm" style="max-width:200px" id="filtro-categoria" aria-label="Filtrar por categoría"></select>
+            <div class="form-check form-switch ms-2"><input class="form-check-input" type="checkbox" id="ver-inactivos"><label class="form-check-label small" for="ver-inactivos">Mostrar inactivos</label></div>
+            <button class="btn btn-sm btn-primary ms-auto gestionar" id="nuevo-producto" type="button"><i class="bi bi-plus-lg"></i> Nuevo producto</button>
+        </div>
+        <div class="tabla-contenedor"><table class="table table-hover">
+            <thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Tipo</th><th class="num">Precio</th><th class="num">Costo est.</th><th>Inventario</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="filas-productos"></tbody></table></div>
+        <div class="paginacion" id="pie-productos"></div>
+    </section>
+    <section class="tab-pane fade tarjeta" id="tab-categorias" role="tabpanel">
+        <div class="tarjeta-cuerpo d-flex"><span class="small text-secondary">Las categorías ordenan el menú en la toma de pedidos.</span>
+            <button class="btn btn-sm btn-primary ms-auto gestionar" id="nueva-categoria" type="button"><i class="bi bi-plus-lg"></i> Nueva categoría</button></div>
+        <div class="tabla-contenedor"><table class="table">
+            <thead><tr><th>Orden</th><th>Nombre</th><th>Productos</th><th>Estado</th><th></th></tr></thead><tbody id="filas-categorias"></tbody></table></div>
+    </section>
+    <section class="tab-pane fade tarjeta" id="tab-complementos" role="tabpanel">
+        <div class="tarjeta-cuerpo d-flex"><span class="small text-secondary">Extras con precio adicional (por ejemplo, queso extra). Si no tienen categoría, aplican a todos los productos.</span>
+            <button class="btn btn-sm btn-primary ms-auto gestionar" id="nuevo-complemento" type="button"><i class="bi bi-plus-lg"></i> Nuevo complemento</button></div>
+        <div class="tabla-contenedor"><table class="table">
+            <thead><tr><th>Nombre</th><th class="num">Precio extra</th><th>Aplica a</th><th>Estado</th><th></th></tr></thead><tbody id="filas-complementos"></tbody></table></div>
+    </section>
+    <section class="tab-pane fade tarjeta" id="tab-mesas" role="tabpanel">
+        <div class="tarjeta-cuerpo d-flex"><span class="small text-secondary">Si hay mesas activas, los pedidos para consumir en el local deben indicar la mesa.</span>
+            <button class="btn btn-sm btn-primary ms-auto" id="nueva-mesa" type="button"><i class="bi bi-plus-lg"></i> Nueva mesa</button></div>
+        <div class="tabla-contenedor"><table class="table">
+            <thead><tr><th>Mesa</th><th class="num">Capacidad</th><th>Estado</th><th></th></tr></thead><tbody id="filas-mesas"></tbody></table></div>
+    </section>
+</div>
+</div>
+</body>
+</html>

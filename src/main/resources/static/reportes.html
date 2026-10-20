@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reportes</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="/vendor/chartjs/chart.umd.min.js" defer></script>
+    <script src="/vendor/jspdf/jspdf.umd.min.js" defer></script>
+    <script src="/vendor/jspdf/jspdf.plugin.autotable.min.js" defer></script>
+    <script src="/vendor/xlsx/xlsx.full.min.js" defer></script>
+    <script type="module" src="/js/reportes.js"></script>
+</head>
+<body>
+<div id="vista">
+<section class="tarjeta mb-3"><div class="tarjeta-cuerpo">
+    <form class="row g-2 align-items-end" id="filtros">
+        <div class="col-md-4"><label class="form-label small mb-1" for="tipo">Reporte</label><select class="form-select form-select-sm" id="tipo" name="tipo"></select></div>
+        <div class="col-6 col-md-2"><label class="form-label small mb-1" for="desde">Desde</label><input class="form-control form-control-sm" type="date" id="desde" name="desde" required></div>
+        <div class="col-6 col-md-2"><label class="form-label small mb-1" for="hasta">Hasta</label><input class="form-control form-control-sm" type="date" id="hasta" name="hasta" required></div>
+        <div class="col-6 col-md-2"><label class="form-label small mb-1" for="agrupacion">Agrupar por</label>
+            <select class="form-select form-select-sm" id="agrupacion" name="agrupacion"><option value="DIA">Día</option><option value="SEMANA">Semana</option><option value="MES">Mes</option></select></div>
+        <div class="col-6 col-md-2"><button class="btn btn-sm btn-primary w-100" type="submit"><i class="bi bi-play"></i> Generar</button></div>
+    </form>
+</div></section>
+<section class="tarjeta" id="resultado" hidden>
+    <div class="tarjeta-titulo flex-wrap"><span id="titulo"></span>
+        <div class="ms-auto btn-group btn-group-sm">
+            <a class="btn btn-outline-secondary" id="csv" href="#" download><i class="bi bi-filetype-csv"></i> CSV</a>
+            <button class="btn btn-outline-secondary" id="excel" type="button"><i class="bi bi-file-earmark-excel"></i> Excel</button>
+            <button class="btn btn-outline-secondary" id="pdf" type="button"><i class="bi bi-filetype-pdf"></i> PDF</button>
+        </div></div>
+    <div class="tarjeta-cuerpo">
+        <p class="small text-secondary" id="explicacion"></p>
+        <div style="position:relative;height:240px" class="mb-3" id="zona-grafico"><canvas id="grafico" role="img"></canvas></div>
+        <div class="tabla-contenedor"><table class="table table-sm table-hover">
+            <thead id="cabecera"></thead><tbody id="filas"></tbody><tfoot id="totales"></tfoot></table></div>
+    </div>
+</section>
+</div>
+</body>
+</html>

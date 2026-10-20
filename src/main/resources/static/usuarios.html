@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empleados y permisos</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/usuarios.js"></script>
+</head>
+<body>
+<div id="vista">
+<ul class="nav nav-tabs mb-3" role="tablist">
+    <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-usuarios" type="button" role="tab">Empleados</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-permisos" type="button" role="tab">Cargos y permisos</button></li>
+</ul>
+<div class="tab-content">
+    <section class="tab-pane fade show active tarjeta" id="tab-usuarios" role="tabpanel">
+        <div class="tarjeta-cuerpo d-flex flex-wrap gap-2 align-items-center">
+            <input class="form-control form-control-sm" style="max-width:260px" id="buscar" placeholder="Buscar empleado" aria-label="Buscar empleado">
+            <button class="btn btn-sm btn-primary ms-auto" id="nuevo" type="button"><i class="bi bi-person-plus"></i> Nuevo empleado</button>
+        </div>
+        <div class="tabla-contenedor"><table class="table table-hover">
+            <thead><tr><th>Nombre</th><th>Usuario</th><th>Cargo</th><th>Teléfono</th><th>Último acceso</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="filas"></tbody></table></div>
+        <div class="paginacion" id="pie"></div>
+    </section>
+    <section class="tab-pane fade" id="tab-permisos" role="tabpanel">
+        <div class="alert alert-secondary small">El cargo <strong>Administrador</strong> siempre tiene todos los permisos. Los permisos se revisan en el servidor en cada operación;
+            al cambiar los permisos de un cargo, cambiar el cargo de un empleado o desactivarlo, su sesión abierta se cierra y debe volver a entrar.</div>
+        <div class="row g-3" id="roles"></div>
+    </section>
+</div>
+</div>
+</body>
+</html>

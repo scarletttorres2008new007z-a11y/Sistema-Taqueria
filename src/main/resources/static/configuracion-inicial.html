@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Configuración inicial</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script type="module" src="/js/configuracion-inicial.js"></script>
+</head>
+<body>
+<main class="pantalla-acceso">
+    <div class="caja-acceso" style="max-width:480px">
+        <div class="tarjeta">
+            <div class="tarjeta-cuerpo p-4">
+                <div class="logo"><i class="bi bi-key" aria-hidden="true"></i></div>
+                <h1 class="h4 text-center mb-1">Configuración inicial</h1>
+                <p class="text-secondary small text-center">El sistema todavía no tiene usuarios. Cree la cuenta del
+                    administrador (dueño). Esta pantalla deja de funcionar en cuanto exista el primer usuario.</p>
+                <div class="alert alert-info small">
+                    <strong>Código de configuración:</strong> aparece en la ventana (consola) donde se inició el servidor,
+                    en un recuadro que dice <em>CONFIGURACIÓN INICIAL PENDIENTE</em>. Solo quien tiene acceso al
+                    servidor puede verlo.
+                </div>
+                <form id="form" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="codigo">Código de configuración</label>
+                        <input class="form-control text-uppercase" id="codigo" name="codigoConfiguracion" autocomplete="off" required placeholder="XXXX-XXXX-XXXX">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="nombre">Nombre completo</label>
+                        <input class="form-control" id="nombre" name="nombre" maxlength="120" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Usuario para entrar</label>
+                        <input class="form-control" id="username" name="username" maxlength="50" required autocomplete="username"
+                               pattern="[A-Za-z0-9._\-]+">
+                        <div class="form-text">Solo letras, números, punto, guion o guion bajo. Ejemplo: dueno</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password">Contraseña</label>
+                        <input class="form-control" id="password" name="password" type="password" minlength="8" required autocomplete="new-password">
+                        <div class="form-text">Mínimo 8 caracteres. Use una contraseña que no use en otros sitios.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password2">Repita la contraseña</label>
+                        <input class="form-control" id="password2" type="password" minlength="8" required autocomplete="new-password">
+                    </div>
+                    <div class="alert alert-danger small d-none" id="error" role="alert"></div>
+                    <button class="btn btn-primary w-100" type="submit" id="btn">Crear administrador</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

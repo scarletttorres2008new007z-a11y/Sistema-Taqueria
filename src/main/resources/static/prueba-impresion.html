@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prueba de impresión</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/prueba-impresion.js"></script>
+</head>
+<body class="pagina-comprobante">
+<div id="vista">
+<div class="vista-comprobante">
+    <div class="papel-termico ancho-80" id="ticket"></div>
+    <aside class="tarjeta no-imprimir" style="max-width:420px;flex:1 1 300px">
+        <div class="tarjeta-titulo"><i class="bi bi-printer"></i> Página de prueba</div>
+        <div class="tarjeta-cuerpo">
+            <p class="small">Este ticket es solo de prueba: no corresponde a ninguna venta y no se guarda nada.</p>
+            <label class="form-label small mb-1" for="ancho">Ancho del papel</label>
+            <select class="form-select form-select-sm mb-3" id="ancho"><option value="80">80 mm</option><option value="58">58 mm</option></select>
+            <button class="btn btn-primary w-100" id="imprimir" type="button"><i class="bi bi-printer"></i> Imprimir prueba</button>
+            <ul class="small text-secondary mt-3 ps-3 mb-0">
+                <li>La regla de abajo debe verse completa, sin cortes en los bordes.</li>
+                <li>Si se corta, revise el tamaño de papel y los márgenes (Ninguno) en el cuadro de impresión.</li>
+                <li>Si sale en blanco, revise el controlador de la impresora y el tipo de papel térmico.</li>
+            </ul>
+        </div>
+    </aside>
+</div>
+</div>
+</body>
+</html>

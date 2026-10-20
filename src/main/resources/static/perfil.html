@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mi perfil</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/perfil.js"></script>
+</head>
+<body>
+<div id="vista">
+<div class="row g-3">
+    <div class="col-lg-5">
+        <section class="tarjeta">
+            <div class="tarjeta-titulo"><i class="bi bi-person-circle"></i> Mis datos</div>
+            <div class="tarjeta-cuerpo" id="datos"></div>
+        </section>
+    </div>
+    <div class="col-lg-7">
+        <section class="tarjeta">
+            <div class="tarjeta-titulo"><i class="bi bi-key"></i> Cambiar mi contraseña</div>
+            <div class="tarjeta-cuerpo">
+                <form id="form-clave" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="actual">Contraseña actual</label>
+                        <input class="form-control" id="actual" name="actual" type="password" autocomplete="current-password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="nueva">Contraseña nueva</label>
+                        <input class="form-control" id="nueva" name="nueva" type="password" minlength="8" autocomplete="new-password" required>
+                        <div class="form-text">Mínimo 8 caracteres.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="nueva2">Repita la contraseña nueva</label>
+                        <input class="form-control" id="nueva2" type="password" minlength="8" autocomplete="new-password" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Guardar contraseña</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+</div>
+</body>
+</html>

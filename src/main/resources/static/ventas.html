@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ventas</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/ventas.js"></script>
+</head>
+<body>
+<div id="vista">
+<div id="pendientes" class="mb-3"></div>
+<section class="tarjeta">
+    <div class="tarjeta-cuerpo pb-2">
+        <form class="row g-2 align-items-end" id="filtros">
+            <div class="col-6 col-md-2"><label class="form-label small mb-1" for="f-numero">Número</label>
+                <input class="form-control form-control-sm" id="f-numero" name="numero" placeholder="V-000001"></div>
+            <div class="col-6 col-md-2"><label class="form-label small mb-1" for="f-estado">Estado</label>
+                <select class="form-select form-select-sm" id="f-estado" name="estado"><option value="">Todos</option>
+                    <option value="PAGADA">Pagada</option><option value="PENDIENTE_PAGO">Pendiente de pago</option><option value="ANULADA">Anulada</option></select></div>
+            <div class="col-6 col-md-2"><label class="form-label small mb-1" for="f-usuario">Cajero</label>
+                <select class="form-select form-select-sm" id="f-usuario" name="usuarioId"><option value="">Todos</option></select></div>
+            <div class="col-6 col-md-2"><label class="form-label small mb-1" for="f-desde">Desde</label>
+                <input class="form-control form-control-sm" type="date" id="f-desde" name="desde"></div>
+            <div class="col-6 col-md-2"><label class="form-label small mb-1" for="f-hasta">Hasta</label>
+                <input class="form-control form-control-sm" type="date" id="f-hasta" name="hasta"></div>
+            <div class="col-6 col-md-2 d-flex gap-1">
+                <button class="btn btn-sm btn-primary flex-grow-1" type="submit"><i class="bi bi-search"></i> Buscar</button>
+                <button class="btn btn-sm btn-outline-secondary" type="reset" aria-label="Limpiar filtros"><i class="bi bi-x-lg"></i></button></div>
+        </form>
+        <div class="small text-secondary mt-2" id="totales"></div>
+    </div>
+    <div class="tabla-contenedor">
+        <table class="table table-hover">
+            <thead><tr><th>Venta</th><th>Fecha</th><th>Pedido</th><th>Cliente</th><th>Cajero</th><th class="num">Total</th><th class="num">Saldo</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="filas"></tbody>
+        </table>
+    </div>
+    <div class="paginacion" id="pie"></div>
+</section>
+</div>
+</body>
+</html>

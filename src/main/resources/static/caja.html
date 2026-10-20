@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Caja</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/caja.js"></script>
+</head>
+<body>
+<div id="vista">
+<div id="actual" class="mb-3"><div class="cargando">Cargando...</div></div>
+<section class="tarjeta">
+    <div class="tarjeta-titulo"><i class="bi bi-clock-history"></i> Cierres anteriores</div>
+    <div class="tabla-contenedor"><table class="table table-hover">
+        <thead><tr><th>Apertura</th><th>Cierre</th><th>Abrió</th><th>Cerró</th><th class="num">Fondo inicial</th><th class="num">Esperado</th><th class="num">Contado</th><th class="num">Diferencia</th><th></th></tr></thead>
+        <tbody id="filas-cierres"></tbody></table></div>
+    <div class="paginacion" id="pie-cierres"></div>
+</section>
+</div>
+</body>
+</html>

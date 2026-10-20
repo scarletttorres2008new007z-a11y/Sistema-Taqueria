@@ -1,0 +1,296 @@
+/* =====================================================================
+   Sistema de administración para taquería - estilos generales
+   Paleta sobria: carbón (barra lateral), naranja chile (acción) y crema.
+   ===================================================================== */
+
+:root {
+    --color-primario: #c2410c;
+    --color-primario-oscuro: #9a3412;
+    --color-primario-suave: #fff1e8;
+    --color-acento: #15803d;
+    --color-fondo: #f8f5f0;
+    --color-superficie: #ffffff;
+    --color-borde: #e7e1d8;
+    --color-texto: #1f1b16;
+    --color-texto-suave: #6b625a;
+    --color-lateral: #211c18;
+    --color-lateral-texto: #d9d1c7;
+    --color-lateral-activo: #342c25;
+    --radio: 10px;
+    --sombra: 0 1px 2px rgba(31, 27, 22, .06), 0 2px 8px rgba(31, 27, 22, .05);
+    --ancho-lateral: 248px;
+
+    --bs-primary: var(--color-primario);
+    --bs-primary-rgb: 194, 65, 12;
+    --bs-link-color: var(--color-primario-oscuro);
+    --bs-link-hover-color: var(--color-primario);
+    --bs-body-bg: var(--color-fondo);
+    --bs-body-color: var(--color-texto);
+    --bs-border-color: var(--color-borde);
+}
+
+body {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.95rem;
+}
+
+/* ---------- Botones con el color principal ---------- */
+.btn-primary {
+    --bs-btn-bg: var(--color-primario);
+    --bs-btn-border-color: var(--color-primario);
+    --bs-btn-hover-bg: var(--color-primario-oscuro);
+    --bs-btn-hover-border-color: var(--color-primario-oscuro);
+    --bs-btn-active-bg: var(--color-primario-oscuro);
+    --bs-btn-active-border-color: var(--color-primario-oscuro);
+    --bs-btn-disabled-bg: var(--color-primario);
+    --bs-btn-disabled-border-color: var(--color-primario);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--color-primario-oscuro);
+    --bs-btn-border-color: var(--color-primario);
+    --bs-btn-hover-bg: var(--color-primario);
+    --bs-btn-hover-border-color: var(--color-primario);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--color-primario-oscuro);
+    --bs-btn-active-border-color: var(--color-primario-oscuro);
+    --bs-btn-active-color: #fff;
+    --bs-btn-disabled-color: var(--color-primario);
+    --bs-btn-disabled-border-color: var(--color-primario);
+    --bs-btn-focus-shadow-rgb: 194, 65, 12;
+}
+.btn-primary { --bs-btn-focus-shadow-rgb: 194, 65, 12; }
+.nav-tabs .nav-link { color: var(--color-texto-suave); }
+.nav-tabs .nav-link.active { color: var(--color-texto); font-weight: 600; }
+.btn-group .btn.active { background: var(--color-texto-suave); border-color: var(--color-texto-suave); color: #fff; }
+.text-primary { color: var(--color-primario) !important; }
+.form-control:focus, .form-select:focus {
+    border-color: #f0a37a;
+    box-shadow: 0 0 0 .2rem rgba(194, 65, 12, .15);
+}
+.form-check-input:checked { background-color: var(--color-primario); border-color: var(--color-primario); }
+
+/* ---------- Estructura ---------- */
+.app { display: flex; min-height: 100vh; }
+
+.barra-lateral {
+    width: var(--ancho-lateral);
+    background: var(--color-lateral);
+    color: var(--color-lateral-texto);
+    position: fixed;
+    inset: 0 auto 0 0;
+    overflow-y: auto;
+    z-index: 1040;
+    transition: transform .2s ease;
+}
+.barra-lateral .marca {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.barra-lateral .marca img { width: 34px; height: 34px; object-fit: contain; border-radius: 6px; background: #fff; }
+.barra-lateral .marca .icono-marca {
+    width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center;
+    background: var(--color-primario); color: #fff; font-size: 1.1rem;
+}
+.barra-lateral .marca span { line-height: 1.15; font-size: .92rem; }
+.barra-lateral .seccion {
+    font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+    color: #9b9086; padding: 1rem 1.1rem .35rem;
+}
+.barra-lateral a.enlace {
+    display: flex; align-items: center; gap: .65rem;
+    color: var(--color-lateral-texto);
+    text-decoration: none;
+    padding: .5rem 1.1rem;
+    margin: 1px .5rem;
+    border-radius: 8px;
+}
+.barra-lateral a.enlace i { font-size: 1.05rem; width: 1.2rem; text-align: center; }
+.barra-lateral a.enlace:hover { background: var(--color-lateral-activo); color: #fff; }
+.barra-lateral a.enlace.activo { background: var(--color-primario); color: #fff; }
+
+.principal { flex: 1; margin-left: var(--ancho-lateral); min-width: 0; display: flex; flex-direction: column; }
+
+.encabezado {
+    background: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+    padding: .6rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+.encabezado h1 { font-size: 1.15rem; margin: 0; font-weight: 600; }
+.encabezado .negocio { color: var(--color-texto-suave); font-size: .82rem; }
+.encabezado .usuario { margin-left: auto; }
+.btn-menu { display: none; }
+
+.contenido { padding: 1.25rem; flex: 1; }
+.aviso-demo {
+    background: #fff7d6; border-bottom: 1px solid #f1df9a; color: #6b5300;
+    padding: .4rem 1.25rem; font-size: .85rem;
+}
+
+.fondo-oscuro { display: none; }
+
+@media (max-width: 991.98px) {
+    .barra-lateral { transform: translateX(-100%); }
+    .barra-lateral.abierta { transform: translateX(0); }
+    .principal { margin-left: 0; }
+    .btn-menu { display: inline-flex; }
+    .fondo-oscuro.visible {
+        display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, .35); z-index: 1035;
+    }
+    .contenido { padding: .9rem; }
+}
+
+/* ---------- Tarjetas y paneles ---------- */
+.tarjeta {
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+.tarjeta > .tarjeta-titulo {
+    padding: .8rem 1rem; border-bottom: 1px solid var(--color-borde);
+    font-weight: 600; display: flex; align-items: center; gap: .5rem;
+}
+.tarjeta > .tarjeta-cuerpo { padding: 1rem; }
+
+.indicador { padding: .9rem 1rem; height: 100%; }
+.indicador .etiqueta { color: var(--color-texto-suave); font-size: .8rem; display: flex; align-items: center; gap: .35rem; }
+.indicador .valor { font-size: 1.45rem; font-weight: 700; margin-top: .15rem; font-variant-numeric: tabular-nums; }
+.indicador .detalle { color: var(--color-texto-suave); font-size: .78rem; }
+.indicador.destacado { border-left: 4px solid var(--color-primario); }
+.indicador.positivo .valor { color: var(--color-acento); }
+.indicador.negativo .valor { color: #b91c1c; }
+
+.barra-filtros {
+    display: flex; flex-wrap: wrap; gap: .5rem; align-items: end; margin-bottom: 1rem;
+}
+.barra-filtros .form-control, .barra-filtros .form-select { min-width: 140px; }
+
+/* ---------- Tablas ---------- */
+.tabla-contenedor { overflow-x: auto; }
+.table { margin-bottom: 0; --bs-table-bg: transparent; }
+.table thead th {
+    font-size: .76rem; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--color-texto-suave); font-weight: 600; background: #fbf9f6; white-space: nowrap;
+}
+.table td { vertical-align: middle; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.paginacion { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem 1rem; flex-wrap: wrap; }
+
+.vacio { text-align: center; color: var(--color-texto-suave); padding: 2.5rem 1rem; }
+.vacio i { font-size: 2rem; display: block; margin-bottom: .4rem; opacity: .6; }
+.cargando { text-align: center; padding: 2rem; color: var(--color-texto-suave); }
+
+/* ---------- Estados ---------- */
+.estado { display: inline-block; font-size: .75rem; font-weight: 600; padding: .2rem .55rem; border-radius: 999px; white-space: nowrap; }
+.estado-PENDIENTE, .estado-PENDIENTE_PAGO, .estado-PENDIENTE_RECEPCION, .estado-BAJO, .estado-POR_VENCER, .estado-PARCIAL { background: #fff4d6; color: #8a5a00; }
+.estado-EN_PREPARACION { background: #e0ecff; color: #1e4fa8; }
+.estado-LISTO { background: #dcf5e6; color: #146c38; }
+.estado-ENTREGADO, .estado-PAGADA, .estado-VIGENTE, .estado-RECIBIDA, .estado-APLICADO, .estado-OK, .estado-ABIERTA { background: #e3f4e9; color: #15703b; }
+.estado-CANCELADO, .estado-ANULADA, .estado-ANULADO, .estado-AGOTADO, .estado-VENCIDO, .estado-REVERTIDO { background: #fde4e1; color: #a1251b; }
+.estado-CERRADA, .estado-INACTIVO { background: #ece9e4; color: #5d554d; }
+
+/* ---------- Toma de pedidos ---------- */
+.categorias-menu { display: flex; gap: .4rem; overflow-x: auto; padding-bottom: .4rem; }
+.categorias-menu .btn { white-space: nowrap; }
+.rejilla-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; }
+.producto-boton {
+    background: var(--color-superficie); border: 1px solid var(--color-borde); border-radius: var(--radio);
+    padding: .6rem; text-align: left; display: flex; flex-direction: column; gap: .25rem; min-height: 112px;
+    box-shadow: var(--sombra); cursor: pointer; transition: border-color .15s, transform .1s;
+}
+.producto-boton:hover { border-color: var(--color-primario); }
+.producto-boton:active { transform: scale(.98); }
+.producto-boton:disabled { opacity: .5; cursor: not-allowed; }
+.producto-boton img { width: 100%; height: 70px; object-fit: cover; border-radius: 6px; }
+.producto-boton .nombre { font-weight: 600; font-size: .9rem; line-height: 1.2; }
+.producto-boton .precio { color: var(--color-primario-oscuro); font-weight: 700; margin-top: auto; }
+
+.carrito { position: sticky; top: 70px; }
+.barra-carrito-movil { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 1020; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+@media (max-width: 991.98px) { .carrito { position: static; } #lineas { scroll-margin-top: 80px; } }
+.carrito .linea { border-bottom: 1px dashed var(--color-borde); padding: .55rem 0; }
+.carrito .linea:last-child { border-bottom: 0; }
+.cantidad-control { display: inline-flex; align-items: center; gap: .25rem; }
+.cantidad-control .btn { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; }
+.cantidad-control input { width: 46px; text-align: center; padding: .15rem; }
+.totales-carrito { font-variant-numeric: tabular-nums; }
+.totales-carrito .total { font-size: 1.35rem; font-weight: 700; }
+
+/* ---------- Panel de cocina ---------- */
+.tablero-cocina { display: grid; grid-template-columns: repeat(3, minmax(260px, 1fr)); gap: 1rem; align-items: start; }
+@media (max-width: 991.98px) { .tablero-cocina { grid-template-columns: 1fr; } }
+.columna-cocina > h2 { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+.ticket-cocina { background: var(--color-superficie); border: 1px solid var(--color-borde); border-radius: var(--radio); margin-bottom: .75rem; box-shadow: var(--sombra); }
+.ticket-cocina .cabecera { display: flex; justify-content: space-between; padding: .55rem .8rem; border-bottom: 1px solid var(--color-borde); }
+.ticket-cocina .cabecera .numero { font-weight: 800; font-size: 1.05rem; }
+.ticket-cocina ul { list-style: none; margin: 0; padding: .5rem .8rem; }
+.ticket-cocina li { padding: .2rem 0; }
+.ticket-cocina .obs { color: #a1251b; font-weight: 600; font-size: .85rem; }
+.ticket-cocina .acciones { padding: .5rem .8rem; border-top: 1px solid var(--color-borde); display: flex; gap: .4rem; flex-wrap: wrap; }
+.ticket-cocina.nuevo { animation: resaltar 2s ease 2; }
+.tiempo-alto { color: #a1251b; font-weight: 700; }
+@keyframes resaltar { 50% { box-shadow: 0 0 0 4px rgba(194, 65, 12, .35); } }
+.conexion { font-size: .8rem; color: var(--color-texto-suave); }
+.conexion .punto { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #9b9086; margin-right: .3rem; }
+.conexion.en-vivo .punto { background: #16a34a; }
+
+/* ---------- Inicio de sesión ---------- */
+.pantalla-acceso { min-height: 100vh; display: grid; place-items: center; padding: 1rem;
+    background: linear-gradient(160deg, #2a221c 0%, #3b2a1f 55%, #c2410c 160%); }
+.caja-acceso { width: 100%; max-width: 400px; }
+.caja-acceso .logo { width: 64px; height: 64px; border-radius: 14px; display: grid; place-items: center; margin: 0 auto .75rem;
+    background: var(--color-primario); color: #fff; font-size: 1.9rem; }
+.caja-acceso .logo img { width: 64px; height: 64px; object-fit: contain; border-radius: 14px; background: #fff; }
+
+/* ---------- Toasts ---------- */
+.zona-avisos { position: fixed; right: 1rem; bottom: 1rem; z-index: 2000; display: flex; flex-direction: column; gap: .5rem; max-width: 360px; }
+
+/* ---------- Comprobante en pantalla ---------- */
+.vista-comprobante { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: flex-start; }
+.papel-termico {
+    background: #fff; color: #000; border: 1px solid #ddd; box-shadow: var(--sombra);
+    font-family: "Courier New", Courier, monospace; font-size: 12px; line-height: 1.3;
+    padding: 4mm 3mm;
+}
+.papel-termico.ancho-80 { width: 80mm; }
+.papel-termico.ancho-58 { width: 58mm; font-size: 10.5px; }
+.papel-termico .centro { text-align: center; }
+.papel-termico .negrita { font-weight: 700; }
+.papel-termico .grande { font-size: 1.25em; }
+.papel-termico hr { border: 0; border-top: 1px dashed #000; margin: 2mm 0; opacity: 1; }
+.papel-termico table { width: 100%; border-collapse: collapse; }
+.papel-termico td { padding: 0; vertical-align: top; }
+.papel-termico td.der { text-align: right; white-space: nowrap; }
+.papel-termico .logo-ticket { max-width: 60%; max-height: 22mm; display: block; margin: 0 auto 1mm; }
+.papel-termico .leyenda { font-size: .85em; text-align: center; border: 1px solid #000; padding: 1mm; margin-top: 2mm; }
+.papel-termico .anulado { text-align: center; font-weight: 700; font-size: 1.3em; border: 2px solid #000; margin: 2mm 0; }
+
+/* ---------- Impresión ----------
+   Al imprimir se oculta todo lo administrativo y solo queda el contenido marcado
+   con .solo-impresion o el ticket térmico. */
+@media print {
+    .barra-lateral, .encabezado, .no-imprimir, .aviso-demo, .zona-avisos, .btn, .fondo-oscuro { display: none !important; }
+    .principal { margin: 0 !important; }
+    .contenido { padding: 0 !important; }
+    body { background: #fff !important; }
+    .tarjeta { box-shadow: none !important; border: 0 !important; }
+}
+@media print {
+    body.pagina-comprobante .contenido > :not(.vista-comprobante),
+    body.pagina-comprobante .vista-comprobante > :not(.papel-termico) { display: none !important; }
+    body.pagina-comprobante .papel-termico { border: 0; box-shadow: none; padding: 0 1mm; margin: 0; }
+}

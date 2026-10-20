@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tomar pedido</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/tomar-pedido.js"></script>
+</head>
+<body>
+<div id="vista">
+<div class="row g-3">
+    <div class="col-xl-8 col-lg-7">
+        <div class="tarjeta mb-3">
+            <div class="tarjeta-cuerpo">
+                <div class="d-flex gap-2 mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input class="form-control" id="buscar" placeholder="Buscar producto por nombre o código" aria-label="Buscar producto">
+                    </div>
+                </div>
+                <div class="categorias-menu" id="categorias" role="tablist" aria-label="Categorías"></div>
+            </div>
+        </div>
+        <div class="rejilla-productos" id="productos"></div>
+    </div>
+    <div class="col-xl-4 col-lg-5">
+        <section class="tarjeta carrito" aria-labelledby="titulo-carrito">
+            <div class="tarjeta-titulo" id="titulo-carrito"><i class="bi bi-basket"></i> Pedido actual
+                <button class="btn btn-sm btn-outline-secondary ms-auto" id="vaciar" type="button">Vaciar</button></div>
+            <div class="tarjeta-cuerpo">
+                <div class="btn-group w-100 mb-2" role="group" aria-label="Tipo de pedido" id="tipos">
+                    <input type="radio" class="btn-check" name="tipo" id="tipo-LOCAL" value="LOCAL" checked>
+                    <label class="btn btn-outline-primary btn-sm" for="tipo-LOCAL"><i class="bi bi-shop"></i> Local</label>
+                    <input type="radio" class="btn-check" name="tipo" id="tipo-LLEVAR" value="LLEVAR">
+                    <label class="btn btn-outline-primary btn-sm" for="tipo-LLEVAR"><i class="bi bi-bag"></i> Llevar</label>
+                    <input type="radio" class="btn-check" name="tipo" id="tipo-DOMICILIO" value="DOMICILIO">
+                    <label class="btn btn-outline-primary btn-sm" for="tipo-DOMICILIO"><i class="bi bi-scooter"></i> Domicilio</label>
+                </div>
+                <div id="zona-mesa" class="mb-2">
+                    <label class="form-label small mb-1" for="mesa">Mesa</label>
+                    <select class="form-select form-select-sm" id="mesa"></select>
+                </div>
+                <div class="row g-2 mb-2">
+                    <div class="col-7 position-relative">
+                        <label class="form-label small mb-1" for="cliente-nombre">Cliente <span class="text-secondary" id="cliente-opcional">(opcional)</span></label>
+                        <input class="form-control form-control-sm" id="cliente-nombre" maxlength="150" autocomplete="off">
+                        <div class="list-group position-absolute w-100 shadow-sm d-none" id="sugerencias" style="z-index:5"></div>
+                    </div>
+                    <div class="col-5">
+                        <label class="form-label small mb-1" for="cliente-telefono">Teléfono</label>
+                        <input class="form-control form-control-sm" id="cliente-telefono" maxlength="30" inputmode="tel">
+                    </div>
+                </div>
+                <div id="zona-domicilio" class="d-none mb-2">
+                    <label class="form-label small mb-1" for="direccion">Dirección de entrega</label>
+                    <input class="form-control form-control-sm mb-1" id="direccion" maxlength="250">
+                    <input class="form-control form-control-sm" id="referencia" maxlength="250" placeholder="Punto de referencia" aria-label="Punto de referencia">
+                </div>
+                <div id="lineas" class="mb-2"></div>
+                <label class="form-label small mb-1" for="notas">Notas generales del pedido</label>
+                <textarea class="form-control form-control-sm mb-3" id="notas" rows="2" maxlength="500" placeholder="Ej.: entregar todo junto"></textarea>
+                <div class="totales-carrito border-top pt-2 mb-3">
+                    <div class="d-flex justify-content-between small text-secondary"><span>Productos</span><span id="t-cantidad">0</span></div>
+                    <div class="d-flex justify-content-between small text-secondary"><span>IVA incluido (<span id="t-iva-pct">13</span>%)</span><span id="t-iva">$0.00</span></div>
+                    <div class="d-flex justify-content-between total"><span>Total</span><span id="t-total">$0.00</span></div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary btn-lg" id="enviar" type="button"><i class="bi bi-send"></i> Enviar a cocina</button>
+                    <button class="btn btn-outline-primary" id="directa" type="button"><i class="bi bi-cash-coin"></i> Cobrar sin pasar por cocina</button>
+                </div>
+                <p class="small text-secondary mt-2 mb-0">El precio final lo calcula el servidor con los precios vigentes.</p>
+            </div>
+        </section>
+    </div>
+</div>
+<a class="btn btn-primary d-lg-none barra-carrito-movil" href="#titulo-carrito" id="ir-carrito"><i class="bi bi-basket"></i> Ver pedido · <span id="m-cantidad">0</span> · <span id="m-total">$0.00</span></a>
+</div>
+</body>
+</html>

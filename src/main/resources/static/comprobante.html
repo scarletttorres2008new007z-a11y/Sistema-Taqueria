@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comprobante</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="/vendor/jspdf/jspdf.umd.min.js" defer></script>
+    <script type="module" src="/js/comprobante.js"></script>
+</head>
+<body class="pagina-comprobante">
+<div id="vista">
+<div class="vista-comprobante">
+    <div class="papel-termico ancho-80" id="ticket"><div class="cargando">Cargando...</div></div>
+    <aside class="tarjeta no-imprimir" style="max-width:420px;flex:1 1 300px">
+        <div class="tarjeta-titulo"><i class="bi bi-printer"></i> Impresión</div>
+        <div class="tarjeta-cuerpo">
+            <div id="estado-comprobante" class="mb-3"></div>
+            <label class="form-label small mb-1" for="ancho">Ancho del papel en esta computadora</label>
+            <select class="form-select form-select-sm mb-3" id="ancho">
+                <option value="80">80 mm</option><option value="58">58 mm</option>
+            </select>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="imprimir" type="button"><i class="bi bi-printer"></i> Imprimir</button>
+                <button class="btn btn-outline-primary" id="pdf" type="button"><i class="bi bi-filetype-pdf"></i> Descargar PDF</button>
+                <a class="btn btn-outline-secondary" id="ver-venta" href="#"><i class="bi bi-receipt"></i> Ver la venta</a>
+            </div>
+            <hr>
+            <div class="small text-secondary">
+                <p class="mb-1"><strong>Cómo imprimir en la impresora térmica:</strong></p>
+                <ol class="ps-3 mb-2">
+                    <li>Pulse <em>Imprimir</em>. Se abre el cuadro de impresión del navegador.</li>
+                    <li>En <em>Destino</em> elija la impresora térmica (por ejemplo, la SAT instalada en Windows).</li>
+                    <li>Márgenes: <em>Ninguno</em>. Escala: <em>Predeterminada</em> o 100 %. Desactive <em>Encabezados y pies de página</em>.</li>
+                </ol>
+                <p class="mb-1">Imprimir de nuevo no crea otra venta ni otro comprobante: solo suma una reimpresión al historial.</p>
+                <p class="mb-0">El sistema registra que se envió a imprimir, pero el navegador no puede confirmar que el papel salió de la impresora.</p>
+            </div>
+        </div>
+    </aside>
+</div>
+</div>
+</body>
+</html>

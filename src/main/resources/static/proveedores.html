@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proveedores</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/proveedores.js"></script>
+</head>
+<body>
+<div id="vista">
+<section class="tarjeta">
+    <div class="tarjeta-cuerpo d-flex flex-wrap gap-2 align-items-center">
+        <input class="form-control form-control-sm" style="max-width:280px" id="buscar" placeholder="Buscar por nombre, contacto o teléfono" aria-label="Buscar proveedor">
+        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="ver-inactivos"><label class="form-check-label small" for="ver-inactivos">Inactivos</label></div>
+        <button class="btn btn-sm btn-primary ms-auto" id="nuevo" type="button"><i class="bi bi-plus-lg"></i> Nuevo proveedor</button>
+    </div>
+    <div class="tabla-contenedor"><table class="table table-hover">
+        <thead><tr><th>Proveedor</th><th>Contacto</th><th>Teléfono</th><th>Correo</th><th>NIT / NRC</th><th>Estado</th><th></th></tr></thead>
+        <tbody id="filas"></tbody></table></div>
+    <div class="paginacion" id="pie"></div>
+</section>
+</div>
+</body>
+</html>

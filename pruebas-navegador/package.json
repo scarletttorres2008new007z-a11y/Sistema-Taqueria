@@ -1,0 +1,11 @@
+{
+  "name": "pruebas-navegador-taqueria",
+  "private": true,
+  "description": "Prueba del formato de impresion termica del comprobante (58 y 80 mm) con un navegador real",
+  "scripts": {
+    "impresion": "node impresion.js"
+  },
+  "devDependencies": {
+    "playwright": "1.48.2"
+  }
+}

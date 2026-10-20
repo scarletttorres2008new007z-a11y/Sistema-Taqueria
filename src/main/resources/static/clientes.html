@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clientes</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/clientes.js"></script>
+</head>
+<body>
+<div id="vista">
+<section class="tarjeta">
+    <div class="tarjeta-cuerpo">
+        <form class="d-flex flex-wrap gap-2 align-items-center" id="filtros">
+            <input class="form-control form-control-sm" style="max-width:280px" name="q" placeholder="Buscar por nombre, teléfono o documento" aria-label="Buscar cliente">
+            <select class="form-select form-select-sm" style="max-width:160px" name="activo" aria-label="Estado"><option value="true">Activos</option><option value="false">Inactivos</option><option value="">Todos</option></select>
+            <button class="btn btn-sm btn-outline-primary" type="submit"><i class="bi bi-search"></i> Buscar</button>
+            <button class="btn btn-sm btn-primary ms-auto" id="nuevo" type="button"><i class="bi bi-plus-lg"></i> Nuevo cliente</button>
+        </form>
+    </div>
+    <div class="tabla-contenedor"><table class="table table-hover">
+        <thead><tr><th>Cliente</th><th>Teléfono</th><th>Dirección</th><th>Documento</th><th>Estado</th><th></th></tr></thead>
+        <tbody id="filas"></tbody></table></div>
+    <div class="paginacion" id="pie"></div>
+</section>
+</div>
+</body>
+</html>

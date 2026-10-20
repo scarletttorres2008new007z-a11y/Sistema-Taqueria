@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventario</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/inventario.js"></script>
+</head>
+<body>
+<div id="vista">
+<div class="row g-3 mb-3" id="indicadores"></div>
+<ul class="nav nav-tabs mb-3" role="tablist">
+    <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-articulos" type="button" role="tab">Artículos</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-movimientos" type="button" role="tab" id="pestana-movimientos">Movimientos</button></li>
+    <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-alertas" type="button" role="tab">Alertas <span class="badge text-bg-danger" id="n-alertas"></span></button></li>
+</ul>
+<div class="tab-content">
+    <section class="tab-pane fade show active tarjeta" id="tab-articulos" role="tabpanel">
+        <div class="tarjeta-cuerpo d-flex flex-wrap gap-2 align-items-center">
+            <input class="form-control form-control-sm" style="max-width:240px" id="buscar" placeholder="Buscar por nombre, código o categoría" aria-label="Buscar artículo">
+            <select class="form-select form-select-sm" style="max-width:180px" id="filtro-estado" aria-label="Filtrar por existencia">
+                <option value="">Todas las existencias</option><option value="AGOTADO">Agotados</option><option value="BAJO">Bajos</option><option value="OK">Normales</option></select>
+            <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="ver-inactivos"><label class="form-check-label small" for="ver-inactivos">Inactivos</label></div>
+            <div class="ms-auto d-flex flex-wrap gap-1">
+                <button class="btn btn-sm btn-outline-success" data-mov="ENTRADA" type="button"><i class="bi bi-box-arrow-in-down"></i> Entrada</button>
+                <button class="btn btn-sm btn-outline-danger" data-mov="SALIDA" type="button"><i class="bi bi-box-arrow-up"></i> Salida</button>
+                <button class="btn btn-sm btn-outline-secondary" data-mov="AJUSTE" type="button"><i class="bi bi-clipboard-check"></i> Ajuste por conteo</button>
+                <button class="btn btn-sm btn-primary" id="nuevo" type="button"><i class="bi bi-plus-lg"></i> Nuevo artículo</button>
+            </div>
+        </div>
+        <div class="tabla-contenedor"><table class="table table-hover">
+            <thead><tr><th>Código</th><th>Artículo</th><th>Categoría</th><th class="num">Existencia</th><th class="num">Mínimo</th><th class="num">Costo unit.</th><th class="num">Valor</th><th>Proveedor</th><th>Vence</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="filas"></tbody></table></div>
+        <div class="paginacion" id="pie"></div>
+    </section>
+    <section class="tab-pane fade tarjeta" id="tab-movimientos" role="tabpanel">
+        <div class="tarjeta-cuerpo">
+            <form class="row g-2 align-items-end" id="filtros-mov">
+                <div class="col-md-3"><label class="form-label small mb-1" for="m-item">Artículo</label><select class="form-select form-select-sm" id="m-item" name="itemId"></select></div>
+                <div class="col-md-2"><label class="form-label small mb-1" for="m-tipo">Tipo</label>
+                    <select class="form-select form-select-sm" id="m-tipo" name="tipo"><option value="">Todos</option><option value="ENTRADA">Entrada</option><option value="SALIDA">Salida</option>
+                        <option value="AJUSTE">Ajuste</option><option value="VENTA">Venta</option><option value="DEVOLUCION_VENTA">Devolución de venta</option><option value="COMPRA">Compra</option></select></div>
+                <div class="col-md-2"><label class="form-label small mb-1" for="m-desde">Desde</label><input class="form-control form-control-sm" type="date" id="m-desde" name="desde"></div>
+                <div class="col-md-2"><label class="form-label small mb-1" for="m-hasta">Hasta</label><input class="form-control form-control-sm" type="date" id="m-hasta" name="hasta"></div>
+                <div class="col-md-1"><button class="btn btn-sm btn-primary w-100" type="submit" aria-label="Buscar"><i class="bi bi-search"></i></button></div>
+            </form>
+            <div class="small text-secondary mt-2">Sin fechas se muestran los últimos 30 días. Cada cambio de existencia queda aquí con usuario, motivo y referencia.</div>
+        </div>
+        <div class="tabla-contenedor"><table class="table table-sm">
+            <thead><tr><th>Fecha</th><th>Artículo</th><th>Tipo</th><th class="num">Cantidad</th><th class="num">Antes</th><th class="num">Después</th><th>Motivo / referencia</th><th>Usuario</th></tr></thead>
+            <tbody id="filas-mov"></tbody></table></div>
+        <div class="paginacion" id="pie-mov"></div>
+    </section>
+    <section class="tab-pane fade" id="tab-alertas" role="tabpanel"><div class="row g-3" id="alertas"></div></section>
+</div>
+</div>
+</body>
+</html>

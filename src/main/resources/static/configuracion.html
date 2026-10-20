@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Configuración</title>
+    <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/js/configuracion.js"></script>
+</head>
+<body>
+<div id="vista">
+<div class="row g-3">
+    <div class="col-lg-7">
+        <section class="tarjeta mb-3">
+            <div class="tarjeta-titulo"><i class="bi bi-shop"></i> Datos del negocio</div>
+            <div class="tarjeta-cuerpo">
+                <div class="alert alert-warning small d-none" id="aviso-datos">Escriba aquí los datos reales de su negocio. El sistema no inventa nombres, NIT ni NRC:
+                    si los deja vacíos, no aparecen en el comprobante.</div>
+                <form class="row g-2" id="form-negocio" novalidate>
+                    <div class="col-md-6"><label class="form-label small mb-1" for="nombreComercial">Nombre comercial</label><input class="form-control" id="nombreComercial" name="nombreComercial" maxlength="150" required></div>
+                    <div class="col-md-6"><label class="form-label small mb-1" for="razonSocial">Nombre o razón social (contribuyente)</label><input class="form-control" id="razonSocial" name="razonSocial" maxlength="200"></div>
+                    <div class="col-md-4"><label class="form-label small mb-1" for="telefono">Teléfono</label><input class="form-control" id="telefono" name="telefono" maxlength="30"></div>
+                    <div class="col-md-8"><label class="form-label small mb-1" for="correo">Correo</label><input class="form-control" type="email" id="correo" name="correo" maxlength="120"></div>
+                    <div class="col-12"><label class="form-label small mb-1" for="direccion">Dirección</label><input class="form-control" id="direccion" name="direccion" maxlength="250"></div>
+                    <div class="col-md-4"><label class="form-label small mb-1" for="nit">NIT</label><input class="form-control" id="nit" name="nit" maxlength="20"></div>
+                    <div class="col-md-4"><label class="form-label small mb-1" for="nrc">NRC</label><input class="form-control" id="nrc" name="nrc" maxlength="20"></div>
+                    <div class="col-md-4"><label class="form-label small mb-1" for="giro">Actividad económica (giro)</label><input class="form-control" id="giro" name="giro" maxlength="200"></div>
+                    <div class="col-12"><label class="form-label small mb-1" for="mensajeComprobante">Mensaje al pie del comprobante</label><input class="form-control" id="mensajeComprobante" name="mensajeComprobante" maxlength="250"></div>
+                    <div class="col-md-4"><label class="form-label small mb-1" for="ivaPorcentaje">IVA (%)</label><input class="form-control" type="number" id="ivaPorcentaje" name="ivaPorcentaje" min="0" max="99.99" step="0.01" required>
+                        <div class="form-text">Los precios del menú incluyen IVA.</div></div>
+                    <div class="col-md-4"><label class="form-label small mb-1" for="anchoPapelMm">Papel de la impresora térmica</label>
+                        <select class="form-select" id="anchoPapelMm" name="anchoPapelMm" data-numero><option value="80">80 mm</option><option value="58">58 mm</option></select></div>
+                    <div class="col-md-4 d-flex align-items-end"><button class="btn btn-primary w-100" type="submit">Guardar datos</button></div>
+                </form>
+            </div>
+        </section>
+        <section class="tarjeta">
+            <div class="tarjeta-titulo"><i class="bi bi-image"></i> Logo</div>
+            <div class="tarjeta-cuerpo d-flex flex-wrap gap-3 align-items-center">
+                <div id="logo-actual" class="border rounded d-grid" style="width:96px;height:96px;place-items:center;background:#fff"></div>
+                <div class="flex-grow-1">
+                    <input class="form-control mb-2" type="file" id="archivo-logo" accept="image/png,image/jpeg,image/webp" aria-label="Archivo del logo">
+                    <div class="d-flex gap-2"><button class="btn btn-sm btn-primary" id="subir-logo" type="button">Subir logo</button>
+                        <button class="btn btn-sm btn-outline-danger" id="quitar-logo" type="button">Quitar logo</button></div>
+                    <div class="form-text">PNG, JPG o WebP, máximo 5 MB. En impresoras térmicas se imprime en blanco y negro: use un logo simple y de alto contraste.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-5">
+        <section class="tarjeta mb-3">
+            <div class="tarjeta-titulo"><i class="bi bi-printer"></i> Impresora térmica</div>
+            <div class="tarjeta-cuerpo small">
+                <p>El sistema imprime con el cuadro de impresión del navegador, que funciona con cualquier impresora instalada en Windows (incluida una SAT térmica con su controlador).</p>
+                <p class="mb-2">Para verificar su impresora:</p>
+                <ol class="ps-3">
+                    <li>Instale el controlador de la impresora en Windows y configure el tamaño de papel (58 u 80 mm).</li>
+                    <li>Abra la página de prueba e imprímala, eligiendo la impresora térmica.</li>
+                    <li>Revise que el texto no se corte a los lados y que el corte de papel sea correcto.</li>
+                </ol>
+                <a class="btn btn-sm btn-outline-primary" href="/prueba-impresion.html"><i class="bi bi-printer"></i> Abrir página de prueba</a>
+                <p class="mt-2 mb-0 text-secondary">La impresión directa sin cuadro de diálogo requiere configurar el navegador o un servicio local; vea docs/IMPRESORA_TERMICA.md.</p>
+            </div>
+        </section>
+        <section class="tarjeta">
+            <div class="tarjeta-titulo"><i class="bi bi-file-earmark-lock"></i> Facturación electrónica (DTE)</div>
+            <div class="tarjeta-cuerpo small" id="fe"></div>
+        </section>
+    </div>
+</div>
+</div>
+</body>
+</html>
